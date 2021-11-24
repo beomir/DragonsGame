@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="header">
+
+    <script type="text/javascript" th:src="@{/js/logo.js}"></script>
+    <section style="float: left;position: absolute">
+        <span id="topA"><a th:href="@{''(lang=ru)}"><img class="makeItBigger" th:src="@{/images/ru2.png}"/></a></span>
+        <span><a th:href="@{''(lang=pl)}"><img class="makeItBigger" th:src="@{/images/pl2.png}"/></a> </span>
+        <span><a th:href="@{''(lang=en)}"><img class="makeItBigger" th:src="@{/images/gb2.png}"/></a></span>
+        <br/><br/>
+        <section sec:authorize="isAuthenticated()">
+            <a  th:href="@{/users/myProfile/{token}(token=${token})}"><div  class="btn1 arrowsRight"><div th:text="#{app.myProfile}"></div></div></a>
+            <a  th:href="@{/logout}"><div  class="btn1 arrowsRight"><div th:text="#{app.logout}"></div></div></a>
+        </section>
+    </section>
+    <section class="right-side">
+        <button id="trigger-overlay" type="button">
+            <span class="fa fa-bars" aria-hidden="true"></span>
+        </button>
+    </section>
+    <div id="div1" class="logo-big" th:text="#{app.gameName}"></div><br>
+
+    <!-- open/close -->
+    <div class="overlay overlay-hugeinc">
+        <button type="button" class="overlay-close">Close</button>
+        <nav>
+            <ul>
+                <li><a th:text="#{app.home}" th:href="@{/index}"></a></li>
+                <li><a th:text="#{app.gameIntroduction}" th:href="@{/gameIntroduction}" ></a></li>
+                <li><a th:text="#{app.dragonsHistory}" th:href="@{/dragonsHistory}" ></a></li>
+                <li><a th:text="#{app.cards}" th:href="@{/cards}" ></a></li>
+                <li><a th:text="#{app.stats}" th:href="@{/stats}" ></a></li>
+                <li><a th:text="#{app.contact}" th:href="@{/cards}"></a></li>
+            </ul>
+        </nav>
+    </div>
+
+</header>
+</body>
+</html>
+
+
